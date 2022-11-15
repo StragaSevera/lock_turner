@@ -1,0 +1,3 @@
+module CLI
+  def self?.start!: () -> void
+end

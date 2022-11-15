@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module LockTurnerCli
+module CLI
   module_function
 
   def start!

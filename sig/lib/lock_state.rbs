@@ -1,0 +1,19 @@
+class LockState
+  attr_reader elements: Array[Integer]
+
+  def initialize: (*Integer elements) -> void
+
+  def distance: (LockState other) -> Integer
+
+  def neighbours: () -> Array[LockState]
+
+  def ==: (LockState other) -> bool
+  
+  def eql?: (LockState other) -> bool
+  
+  def hash: () -> Integer
+
+  private
+
+  def neighbours_by_index: (Integer index) -> Array[LockState]
+end
