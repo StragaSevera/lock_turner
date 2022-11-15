@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lock_state'
+require_relative 'lock_state'
 require 'fc'
 
 class LockTurner
@@ -29,18 +29,22 @@ class LockTurner
     until queue.empty?
       current = queue.pop
       break if current == stop
-      current_cost = costs[current]
 
-      current.neighbours.each do |neighbour|
-        next if states_graph.include?(neighbour) || forbidden_states.include?(neighbour)
-
-        priority = current_cost + current.distance_to(stop)
-        queue.push(neighbour, priority)
-        states_graph[neighbour] = current
-        costs[neighbour] = current_cost + 1
-      end
+      process_neighbours(queue, states_graph, costs, current)
     end
     states_graph
+  end
+
+  def process_neighbours(queue, states_graph, costs, current)
+    current_cost = costs[current]
+    current.neighbours.each do |neighbour|
+      next if states_graph.include?(neighbour) || forbidden_states.include?(neighbour)
+
+      priority = current_cost + current.distance_to(stop)
+      queue.push(neighbour, priority)
+      states_graph[neighbour] = current
+      costs[neighbour]        = current_cost + 1
+    end
   end
 
   def find_path(states_graph)

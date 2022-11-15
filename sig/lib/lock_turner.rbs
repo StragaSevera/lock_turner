@@ -9,5 +9,9 @@ class LockTurner
   
   private
   def map_states_graph: () -> Hash[LockState, LockState]
+  def process_neighbours: (
+      untyped queue, Hash[LockState, LockState] states_graph, 
+      Hash[LockState, Integer] costs, LockState current
+    )  -> void
   def find_path: (Hash[LockState, LockState] states_graph) -> Array[LockState]
 end

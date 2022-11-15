@@ -46,13 +46,13 @@ describe LockTurner do
     it 'finds correct way' do
       result = turner.solve
 
-      expect(result).to eq [[3, 4, 5], 
-                            [3, 3, 5], 
-                            [3, 2, 5], 
-                            [3, 2, 6], 
-                            [3, 2, 7], 
-                            [3, 3, 7], 
-                            [3, 3, 8], 
+      expect(result).to eq [[3, 4, 5],
+                            [3, 3, 5],
+                            [3, 2, 5],
+                            [3, 2, 6],
+                            [3, 2, 7],
+                            [3, 3, 7],
+                            [3, 3, 8],
                             [3, 4, 8]]
     end
   end
@@ -67,7 +67,7 @@ describe LockTurner do
         [2, 1, 2],
         [2, 3, 2],
         [2, 2, 1],
-        [2, 2, 3],
+        [2, 2, 3]
       ]
     end
 
