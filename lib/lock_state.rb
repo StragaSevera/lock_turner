@@ -7,7 +7,7 @@ class LockState
     @elements = elements
   end
 
-  def distance(other)
+  def distance_to(other)
     elements.zip(other.elements).sum do |(a, b)|
       result = (a - b).abs
       result <= 5 ? result : 10 - result

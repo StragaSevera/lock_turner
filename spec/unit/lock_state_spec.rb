@@ -15,7 +15,7 @@ describe LockState do
   context '#distance' do
     it 'calculates correct distance' do
       other = LockState.new([1, -2, 2])
-      expect(lock_state.distance(other)).to eq 7
+      expect(lock_state.distance_to(other)).to eq 7
     end
   end
 

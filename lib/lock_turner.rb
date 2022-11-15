@@ -11,42 +11,45 @@ class LockTurner
   end
 
   def solve
-    previous_states = map_graph_states
-    find_path(previous_states).map(&:elements)
+    states_graph = map_states_graph
+    find_path(states_graph).map(&:elements)
   end
 
   private
 
   attr_reader :start, :stop, :forbidden_states
 
-  def map_graph_states
+  # Using A* algoritm for heuristic search
+  def map_states_graph
     queue = FastContainers::PriorityQueue.new(:min)
-    i = 0 # Using BFS for simplicity
-    queue.push(start, i) 
-    previous_states = { start => start }
+    queue.push(start, start.distance_to(stop))
+    states_graph = { start => start }
+    costs = { start => 0 }
 
     until queue.empty?
       current = queue.pop
       break if current == stop
+      current_cost = costs[current]
 
       current.neighbours.each do |neighbour|
-        unless previous_states.include?(neighbour) || forbidden_states.include?(neighbour)
-          i += 1
-          queue.push(neighbour, i) # Using BFS for simplicity
-          previous_states[neighbour] = current
-        end
+        next if states_graph.include?(neighbour) || forbidden_states.include?(neighbour)
+
+        priority = current_cost + current.distance_to(stop)
+        queue.push(neighbour, priority)
+        states_graph[neighbour] = current
+        costs[neighbour] = current_cost + 1
       end
     end
-    previous_states
+    states_graph
   end
 
-  def find_path(previous_states)
+  def find_path(states_graph)
     current = stop
     path    = []
     loop do
       break if current.nil? || current == start
 
-      current = previous_states[current]
+      current = states_graph[current]
       path << current
     end
     path = path.reverse << stop if path.any?

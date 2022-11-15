@@ -3,7 +3,7 @@ class LockState
 
   def initialize: (Array[Integer] elements) -> void
 
-  def distance: (LockState other) -> Integer
+  def distance_to: (LockState other) -> Integer
 
   def neighbours: () -> Array[LockState]
 

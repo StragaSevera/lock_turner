@@ -21,14 +21,14 @@ describe LockTurner do
 
       expect(result).to eq [[0, 0, 0],
                             [0, 1, 0],
-                            [1, 1, 0],
+                            [0, 1, 1],
                             [1, 1, 1]]
     end
   end
 
   context 'with complex route' do
     let(:start) { [3, 4, 5] }
-    let(:stop) { [3, 4, 7] }
+    let(:stop) { [3, 4, 8] }
     let(:forbidden_states) do
       [
         [3, 4, 6],
@@ -36,7 +36,10 @@ describe LockTurner do
         [3, 3, 6],
         [4, 4, 6],
         [2, 4, 7],
-        [2, 3, 7]
+        [2, 3, 7],
+        [3, 5, 7],
+        [3, 5, 8],
+        [2, 4, 8]
       ]
     end
 
@@ -44,12 +47,13 @@ describe LockTurner do
       result = turner.solve
 
       expect(result).to eq [[3, 4, 5], 
-                            [2, 4, 5], 
-                            [2, 5, 5], 
-                            [2, 5, 6], 
-                            [2, 5, 7], 
-                            [3, 5, 7], 
-                            [3, 4, 7]]
+                            [3, 3, 5], 
+                            [3, 2, 5], 
+                            [3, 2, 6], 
+                            [3, 2, 7], 
+                            [3, 3, 7], 
+                            [3, 3, 8], 
+                            [3, 4, 8]]
     end
   end
 end

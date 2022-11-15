@@ -8,6 +8,6 @@ class LockTurner
   def solve: () -> Array[Array[Integer]]
   
   private
-  def map_graph_states: () -> Hash[LockState, LockState]
-  def find_path: (Hash[LockState, LockState] previous_states) -> Array[LockState]
+  def map_states_graph: () -> Hash[LockState, LockState]
+  def find_path: (Hash[LockState, LockState] states_graph) -> Array[LockState]
 end
