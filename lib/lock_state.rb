@@ -29,6 +29,10 @@ class LockState
   def hash
     elements.hash
   end
+  
+  def to_s
+    "LockState#{elements.to_s}"
+  end
 
   private
 

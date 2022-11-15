@@ -1,0 +1,13 @@
+class LockTurner
+  attr_reader start: LockState
+  attr_reader stop: LockState
+  attr_reader forbidden_states: Array[LockState]
+
+  def initialize: (Array[Integer] start, Array[Integer] stop, Array[Array[Integer]] forbidden) -> void
+
+  def solve: () -> Array[Array[Integer]]
+  
+  private
+  def map_graph_states: () -> Hash[LockState, LockState]
+  def find_path: (Hash[LockState, LockState] previous_states) -> Array[LockState]
+end
