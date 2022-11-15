@@ -1,3 +1,6 @@
 module CLI
-  def self?.start!: () -> void
+  def start!: () -> void
+  
+  private
+  def input_code: () -> Array[Integer]
 end
