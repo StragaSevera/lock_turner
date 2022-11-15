@@ -56,4 +56,25 @@ describe LockTurner do
                             [3, 4, 8]]
     end
   end
+
+  context 'when no available route' do
+    let(:start) { [0, 0, 0] }
+    let(:stop) { [2, 2, 2] }
+    let(:forbidden_states) do
+      [
+        [1, 2, 2],
+        [3, 2, 2],
+        [2, 1, 2],
+        [2, 3, 2],
+        [2, 2, 1],
+        [2, 2, 3],
+      ]
+    end
+
+    it 'responds with an empty array' do
+      result = turner.solve
+
+      expect(result).to eq []
+    end
+  end
 end

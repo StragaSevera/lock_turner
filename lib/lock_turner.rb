@@ -47,7 +47,7 @@ class LockTurner
     current = stop
     path    = []
     loop do
-      break if current.nil? || current == start
+      break if !states_graph.include?(current) || current == start
 
       current = states_graph[current]
       path << current
