@@ -1,7 +1,7 @@
 class LockState
   attr_reader elements: Array[Integer]
 
-  def initialize: (*Integer elements) -> void
+  def initialize: (Array[Integer] elements) -> void
 
   def distance: (LockState other) -> Integer
 

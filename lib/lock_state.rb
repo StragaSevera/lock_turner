@@ -3,7 +3,7 @@
 class LockState
   attr_reader :elements
 
-  def initialize(*elements)
+  def initialize(elements)
     @elements = elements
   end
 
@@ -37,7 +37,7 @@ class LockState
     [(value - 1) % 10, (value + 1) % 10].map do |element|
       neighbor = elements.dup
       neighbor[index] = element
-      LockState.new(*neighbor)
+      LockState.new(neighbor)
     end
   end
 end
